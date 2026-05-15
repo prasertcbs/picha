@@ -1,0 +1,7 @@
+store_id,store_name,branch_type,district,seats,takeaway_heavy_flag,office_traffic_index,mall_traffic_index,delivery_catchment_score,opening_date,flagship_flag,floor_area_sqm,monthly_rent_thb,num_employees,num_baristas,daily_capacity,bts_distance_m,nearby_competitors,google_rating,has_parking,lease_end_date
+1,PiCha centralwOrld,mall,Pathum Wan,20,1,0.6,0.9,0.8,2025-03-01,0,45,180000,8,5,400,200,3,4.5,0,2028-02-28
+2,PiCha Siam Square,street,Pathum Wan,12,1,0.7,0.8,0.95,2025-04-15,0,35,250000,7,5,450,150,4,4.6,0,2027-04-14
+3,PiCha Park Silom,office,Bang Rak,8,1,0.9,0.4,0.9,2025-05-10,0,25,95000,5,3,250,300,2,4.3,1,2028-05-09
+4,PiCha Exchange Tower,office,Khlong Toei,6,1,0.95,0.3,0.8,2025-06-05,0,20,85000,4,3,200,100,1,4.2,0,2027-06-04
+5,PiCha Vanit Village,mixed_use,Ratchathewi,10,1,0.7,0.6,0.7,2025-07-01,0,30,65000,5,3,280,500,2,4.1,1,2029-06-30
+6,PiCha ICONSIAM,mall_flagship,Khlong San,30,0,0.5,1.0,0.65,2026-01-15,1,120,350000,12,8,600,80,3,4.8,1,2031-01-14

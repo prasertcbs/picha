@@ -1,0 +1,23 @@
+sku_id,sku_name,family,tea_base,milk_flag,fruit_flag,cold_brew_flag,blended_flag,size_code,size_ml,list_price_thb,sweetness_min_pct,sweetness_max_pct,caffeine_level,seasonal_flag,signature_flag,launch_branch_flag
+1,Glutinous Green Milk Tea R,milk_tea,glutinous_green,1,0,0,0,R,500,85,0,100,medium,0,1,0
+2,Glutinous Green Milk Tea L,milk_tea,glutinous_green,1,0,0,0,L,700,100,0,100,medium,0,1,0
+3,Tie Guan Yin Milk Tea R,milk_tea,tie_guan_yin,1,0,0,0,R,500,110,0,100,high,0,1,0
+4,Tie Guan Yin Milk Tea L,milk_tea,tie_guan_yin,1,0,0,0,L,700,130,0,100,high,0,1,0
+5,Da Hong Pao Milk Tea R,milk_tea,da_hong_pao,1,0,0,0,R,500,110,0,100,high,0,1,0
+6,Da Hong Pao Milk Tea L,milk_tea,da_hong_pao,1,0,0,0,L,700,130,0,100,high,0,1,0
+7,Pu'er Milk Tea R,milk_tea,puer,1,0,0,0,R,500,95,0,100,medium,0,0,0
+8,Pu'er Milk Tea L,milk_tea,puer,1,0,0,0,L,700,115,0,100,medium,0,0,0
+9,Osmanthus Milk Tea R,milk_tea,osmanthus,1,0,0,0,R,500,95,0,100,low,0,0,0
+10,Osmanthus Milk Tea L,milk_tea,osmanthus,1,0,0,0,L,700,115,0,100,low,0,0,0
+11,Jasmine Milk Tea R,milk_tea,jasmine,1,0,0,0,R,500,95,0,100,medium,0,1,0
+12,Jasmine Milk Tea L,milk_tea,jasmine,1,0,0,0,L,700,115,0,100,medium,0,1,0
+13,White Peach Milk Tea R,milk_tea,white_peach,1,0,0,0,R,500,95,0,100,low,0,1,0
+14,White Peach Milk Tea L,milk_tea,white_peach,1,0,0,0,L,700,115,0,100,low,0,1,0
+15,Jasmine Grapefruit Tea L,fruit_tea,jasmine,0,1,0,0,L,700,105,0,100,low,0,1,0
+16,Lemon Glutinous Green Tea L,fruit_tea,glutinous_green,0,1,0,0,L,700,105,0,100,medium,0,1,0
+17,Peach Jasmine Tea L,fruit_tea,jasmine,0,1,0,0,L,700,95,0,100,low,0,1,0
+18,Fresh Orange Jasmine Tea L,fruit_tea,jasmine,0,1,0,0,L,700,150,0,100,low,1,1,0
+19,Tie Guan Yin Pure Tea R,pure_tea,tie_guan_yin,0,0,0,0,R,500,110,0,100,high,0,0,0
+20,Glutinous Green Pure Tea R,pure_tea,glutinous_green,0,0,0,0,R,500,85,0,100,medium,0,0,0
+21,Mango Sticky Rice Tea L,fruit_tea,mango,0,1,0,0,L,700,135,0,100,low,1,1,1
+22,Thai Tea Frappe L,blended,thai_tea,0,0,0,1,L,700,125,0,100,medium,1,1,0
