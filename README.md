@@ -7,3 +7,5 @@ Unauthorized use, reproduction, distribution, or modification of this dataset ou
 - picha.xlsx
 - csv
 
+Disclaimer: This dataset is entirely synthetic and was created for educational and demonstration purposes only. It does not represent real individuals, transactions, or properties, and any resemblance to actual persons or events is purely coincidental. The data should not be used for decision-making, legal, financial, marketing, or operational purposes.
+
