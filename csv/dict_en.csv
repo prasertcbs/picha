@@ -1,0 +1,102 @@
+table_name,column_name,data_type,example_values,description
+customers,customer_id,INTEGER,1000 – 3499,Unique customer identifier.
+customers,age_group,VARCHAR,"Gen_Z_18_24, Gen_Z_25_29, Millennial_30_35, Older_36plus",Customer age bracket.
+customers,gender,VARCHAR,"female, male",Gender as self-reported by the customer.
+customers,income_segment,VARCHAR,"low, mid, high",Income segment (assigned based on the distribution within each age group).
+customers,loyalty_tier,VARCHAR,"none, member, silver, gold",Current loyalty program tier; the tier changes week by week during the simulation based on a Markov model.
+customers,discovery_channel,VARCHAR,"tiktok, instagram, word_of_mouth, delivery_app, walk_in",The first channel through which the customer discovered PiCha.
+customers,health_conscious,INTEGER,0 or 1,1 = prefers lower sweetness; 0 = no special preference (62% of customers are health-conscious).
+customers,sweetness_preference,VARCHAR,"full, less_sweet, adaptive",The sweetness style the customer typically orders.
+customers,acquisition_date,DATE,2026-02-01 – 2026-03-31,"The date the customer was first recorded in the system (customer acquisition occurs in waves, with peaks driven by events and activities)."
+menus,sku_id,INTEGER,1 – 22,Unique product identifier.
+menus,sku_name,VARCHAR,e.g. Jasmine Milk Tea L,Human-readable product name.
+menus,family,VARCHAR,"milk_tea, fruit_tea, pure_tea, blended",Product category.
+menus,tea_base,VARCHAR,"jasmine, tie_guan_yin, da_hong_pao, osmanthus, puer, white_peach, glutinous_green, mango, thai_tea, etc.",Tea or primary flavor used as the menu base.
+menus,milk_flag,INTEGER,0 or 1,Indicates whether the product contains milk or milk foam.
+menus,fruit_flag,INTEGER,0 or 1,Indicates whether the product contains fruit ingredients.
+menus,cold_brew_flag,INTEGER,0 or 1,Indicates whether the product is prepared as cold brew.
+menus,blended_flag,INTEGER,0 or 1,Indicates whether the product is blended/frappé style.
+menus,size_code,VARCHAR,"R (Regular), L (Large)",Cup size code.
+menus,size_ml,INTEGER,500 – 700,Beverage volume in milliliters.
+menus,list_price_thb,INTEGER,85 – 150,Base menu price in THB before any delivery markup.
+menus,sweetness_min_pct,INTEGER,0,Minimum sweetness level supported by this menu item.
+menus,sweetness_max_pct,INTEGER,100,Maximum sweetness level supported by this menu item.
+menus,caffeine_level,VARCHAR,"low, medium, high",Caffeine level.
+menus,seasonal_flag,INTEGER,0 or 1,Indicates whether the item is a limited-time or seasonal menu item.
+menus,signature_flag,INTEGER,0 or 1,Indicates whether the item is a signature or hero product of the brand.
+menus,launch_branch_flag,INTEGER,0 or 1,Indicates whether the item was first launched only at selected branches.
+stores,store_id,INTEGER,1 – 6,Unique branch identifier.
+stores,store_name,VARCHAR,See below,Human-readable branch name.
+stores,branch_type,VARCHAR,"mall, street, office, mixed_use, mall_flagship",Branch operating type.
+stores,district,VARCHAR,"Pathum Wan, Bang Rak, Khlong Toei, Ratchathewi, Khlong San",Bangkok district where the branch is located.
+stores,seats,INTEGER,6 – 30,Customer seating capacity.
+stores,takeaway_heavy_flag,INTEGER,0 or 1,1 = branch mainly focused on takeaway sales.
+stores,office_traffic_index,FLOAT,0.5 – 0.95,Degree of proximity to office-worker traffic (normalized to a standard scale).
+stores,mall_traffic_index,FLOAT,0.3 – 1.0,Degree of proximity to shopping mall traffic (normalized to a standard scale).
+stores,delivery_catchment_score,FLOAT,0.65 – 0.95,Quality of delivery platform coverage in the area (normalized to a standard scale).
+stores,opening_date,DATE,2025-03-01 – 2026-01-15,Branch opening date.
+stores,flagship_flag,INTEGER,0 or 1,"1 = flagship branch (for example, ICONSIAM)."
+stores,floor_area_sqm,INTEGER,20 – 120,Store floor area in square meters.
+stores,monthly_rent_thb,INTEGER,"65,000 – 350,000",Monthly rent in THB.
+stores,num_employees,INTEGER,4 – 12,Total number of employees.
+stores,num_baristas,INTEGER,3 – 8,Number of baristas (affects beverage preparation time scaling).
+stores,daily_capacity,INTEGER,200 – 600,Maximum number of orders per day (affects customer wait-time scaling).
+stores,bts_distance_m,INTEGER,80 – 500,"Distance from the branch to the nearest BTS station, in meters."
+stores,nearby_competitors,INTEGER,1 – 4,Number of competing shops nearby.
+stores,google_rating,FLOAT,4.1 – 4.8,Google Maps review score.
+stores,has_parking,INTEGER,0 or 1,1 = customer parking is available.
+stores,lease_end_date,DATE,2027-04-14 – 2031-01-14,End date of the current lease agreement.
+transactions,transaction_id,INTEGER,"1 – 53,323","Unique order identifier, ordered by `order_datetime`."
+transactions,order_datetime,TIMESTAMP,2026-02-01 09:00 – 2026-04-01 22:53,Full order timestamp.
+transactions,order_date,DATE,2026-02-01 – 2026-04-01,Order date only.
+transactions,hour,INTEGER,9 – 22,"Hour when the order was placed (9 = 09:00, 22 = 22:00)."
+transactions,day_of_week,VARCHAR,Monday – Sunday,Day name of the week.
+transactions,dow_int,INTEGER,0 – 6,"Numeric day-of-week index (0 = Monday, 6 = Sunday)."
+transactions,month,INTEGER,2 – 4,Month number in which the order occurred.
+transactions,store_id,INTEGER,1 – 6,Foreign key to `stores.store_id`.
+transactions,channel,VARCHAR,"dine_in, to_go, delivery","Service channel for the order (dine-in, takeaway, or delivery)."
+transactions,platform,VARCHAR,"YumDash, C2U, direct",Delivery platform (`direct` for non-delivery orders).
+transactions,customer_id,INTEGER,"1000 – 3499, or NULL",Foreign key to `customers.customer_id`; NULL for about 74% of orders (anonymous walk-in or delivery customers).
+transactions,basket_qty,INTEGER,1 – 4,Number of menu items in the order.
+transactions,gross_sales_thb,FLOAT,85 – 665,"Sum of `unit_list_price_thb × qty` across all lines, before any discounts."
+transactions,item_discount_thb,FLOAT,0 – 54,Sum of line-level discounts (`line_discount_thb`) across all lines.
+transactions,order_discount_thb,FLOAT,0 – 30,"Order-level promotional discount (for example, code `BUILDER3` = 30 THB off)."
+transactions,delivery_fee_paid_by_customer,FLOAT,0 – 70,"Delivery fee charged to the customer; during peak hours (11–13 and 17–19), a 1.4x surge price is applied."
+transactions,platform_subsidy_thb,FLOAT,0 – 32,Delivery subsidy from the platform (used for about 38% of delivery orders with pre-discount sales of at least 199 THB).
+transactions,net_sales_thb,FLOAT,68 – 695,Net order sales = `gross_sales_thb - item_discount_thb - order_discount_thb + delivery_fee_paid_by_customer`.
+transactions,cogs_thb,FLOAT,19 – 219,"Total cost of goods sold, summed from `line_cogs_thb` across all lines."
+transactions,packaging_cost_thb,FLOAT,2 – 20,"Packaging cost: 5 THB per item for delivery, 2 THB per item for other channels."
+transactions,platform_commission_thb,FLOAT,0 – 147,"Platform commission: YumDash = 23%, C2U = 19% of net item sales (delivery only)."
+transactions,labor_alloc_thb,FLOAT,4 – 8,Allocated labor cost per order: `4 + 0.8 × basket_qty`.
+transactions,contribution_margin_thb,FLOAT,39 – 287,Order contribution margin = `net_sales_thb - cogs_thb - packaging_cost_thb - labor_alloc_thb - platform_commission_thb`.
+transactions,prep_time_min,FLOAT,3.0 – 17.0,"Base beverage preparation time, scaled by branch capacity pressure: `3.0 × (orders_today / daily_capacity) / median_pressure + 1.5 × basket_qty + 2.0 (if delivery) + noise`."
+transactions,wait_time_min,FLOAT,0.0 – 21.0,"Customer waiting time for dine-in/to-go orders, calculated from `prep_time × pressure_factor - (1 to 3 minutes)` and scaled by in-store queue intensity."
+transactions,pickup_time_min,FLOAT,0.0 – 42.0,"Pickup time for delivery orders, calculated from `prep_time × pressure_factor + (10 to 25 minutes)`; 0 for non-delivery orders."
+transactions,satisfaction_score,INTEGER,1 – 5,"Customer satisfaction score (1 = worst, 5 = best), modeled from branch type, loyalty bonus, long-wait penalties, and discount bonus."
+transactions,promo_id,VARCHAR,"NULL, MORNING15, HAPPY2FOR1, BUILDER3, FLAVOR50, WELCOME20",Promotion campaign code attached to the order (about 20% of orders have a promotion).
+transactions,weather_flag,VARCHAR,"sunny, cloudy, rainy",Weather on the order date (simulated using a Markov model and seasonal distribution).
+transactions,peak_flag,INTEGER,0 or 1,"1 if the order occurred during peak hours (11–13, 17–19)."
+transactions,weekend_flag,INTEGER,0 or 1,1 if the order occurred on Saturday or Sunday.
+transactions,morning_flag,INTEGER,0 or 1,1 if the order occurred before 11:00 (hours 9–10).
+order_items,transaction_id,INTEGER,"1 – 53,323",Foreign key to `transactions.transaction_id`.
+order_items,line_no,INTEGER,1 – 4,Line number of the item within the transaction (starting from 1).
+order_items,sku_id,INTEGER,1 – 22,Foreign key to `menus.sku_id`.
+order_items,qty,INTEGER,Always 1,Quantity per line (fixed at 1; basket size is measured at the transaction level instead).
+order_items,unit_list_price_thb,INTEGER,85 – 177,Unit price after delivery markup in THB; delivery orders include an additional 6–18% markup.
+order_items,line_discount_thb,FLOAT,0.0 – 27.0,"Discount amount applied to this line in THB, from membership tier, time-based promotion, or campaign discount."
+order_items,net_line_sales_thb,FLOAT,76.5 – 172.0,Net sales for this line = `unit_list_price_thb - line_discount_thb`.
+order_items,sweetness_pct,INTEGER,0 – 100,"Sweetness level selected by the customer as a percentage (0 = no sugar, 100 = full sweetness)."
+order_items,ice_level,VARCHAR,"no_ice, less_ice, normal, extra_ice",Customer ice-level preference.
+order_items,add_on,VARCHAR,"none, extra_pearl, extra_milk_foam",Additional topping selected by the customer.
+order_items,line_cogs_thb,FLOAT,19.0 – 70.8,"Cost of goods sold for this line item (~28–40% of net sales, depending on menu family)."
+order_items,order_datetime,TIMESTAMP,2026-02-01 09:00 – 2026-04-01 22:53,Full timestamp of the parent transaction to which this line belongs.
+reviews,id,INTEGER,1 – 100,Unique review identifier.
+reviews,topic,VARCHAR,Picha Tea House,Review topic (constant value).
+reviews,language,VARCHAR,"th, en",Review language (Thai or English).
+reviews,rating,INTEGER,1 – 5,Star rating.
+reviews,date,DATE,2026-02-01 – 2026-04-01,Review date.
+reviews,persona,VARCHAR,Various,Reviewer persona type.
+reviews,review_text,VARCHAR,Free text,Full review text.
+reviews,label,VARCHAR,authentic,"Review quality label (for example, authentic review)."
+reviews,spam_type,VARCHAR,NULL,Spam type; NULL for all rows in this dataset.
+reviews,duplicate_group_id,VARCHAR,Various,Group used to cluster duplicate or near-duplicate reviews.

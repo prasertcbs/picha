@@ -1,0 +1,102 @@
+table_name,column_name,data_type,example_values,description
+customers,customer_id,INTEGER,1000 – 3499,รหัสลูกค้าแบบเฉพาะไม่ซ้ำ
+customers,age_group,VARCHAR,"Gen_Z_18_24, Gen_Z_25_29, Millennial_30_35, Older_36plus",กลุ่มช่วงอายุของลูกค้า
+customers,gender,VARCHAR,"female, male",เพศตามที่ลูกค้าระบุ
+customers,income_segment,VARCHAR,"low, mid, high",ระดับรายได้ (กำหนดตามการกระจายตัวของกลุ่มอายุ)
+customers,loyalty_tier,VARCHAR,"none, member, silver, gold",ระดับสมาชิกในโปรแกรมสะสมแต้มปัจจุบัน โดยระดับจะเปลี่ยนแปลงตามแบบจำลองมาร์คอฟในแต่ละสัปดาห์ของการจำลอง
+customers,discovery_channel,VARCHAR,"tiktok, instagram, word_of_mouth, delivery_app, walk_in",ช่องทางแรกที่ลูกค้ารู้จัก PiCha
+customers,health_conscious,INTEGER,0 or 1,"1 = ชอบหวานน้อย, 0 = ไม่มีความชอบเป็นพิเศษ (62% ของลูกค้าสนใจสุขภาพ)"
+customers,sweetness_preference,VARCHAR,"full, less_sweet, adaptive",รูปแบบความหวานที่ลูกค้ามักสั่งเป็นประจำ
+customers,acquisition_date,DATE,2026-02-01 – 2026-03-31,วันที่ลูกค้าเริ่มถูกบันทึกเข้าระบบครั้งแรก (มีการได้ลูกค้าเพิ่มเป็นช่วง ๆ และมีช่วงพีกจากอีเวนต์/กิจกรรม)
+menus,sku_id,INTEGER,1 – 22,รหัสสินค้าแบบเฉพาะไม่ซ้ำ
+menus,sku_name,VARCHAR,"e.g. ""Jasmine Milk Tea L""",ชื่อสินค้าที่มนุษย์อ่านเข้าใจง่าย
+menus,family,VARCHAR,"milk_tea, fruit_tea, pure_tea, blended",หมวดหมู่ประเภทของสินค้า
+menus,tea_base,VARCHAR,"jasmine, tie_guan_yin, da_hong_pao, osmanthus, puer, white_peach, glutinous_green, mango, thai_tea, etc.",ชาหรือรสชาติหลักที่ใช้เป็นเบสของเมนู
+menus,milk_flag,INTEGER,0 or 1,ระบุว่าสินค้ามีนมหรือฟองนมหรือไม่
+menus,fruit_flag,INTEGER,0 or 1,ระบุว่าสินค้ามีส่วนผสมของผลไม้หรือไม่
+menus,cold_brew_flag,INTEGER,0 or 1,ระบุว่าสินค้าชงแบบ cold brew หรือไม่
+menus,blended_flag,INTEGER,0 or 1,ระบุว่าสินค้าเป็นแบบปั่น/เฟรปเป้หรือไม่
+menus,size_code,VARCHAR,"R (Regular), L (Large)",รหัสขนาดแก้ว
+menus,size_ml,INTEGER,500 – 700,ปริมาณเครื่องดื่ม (มิลลิลิตร)
+menus,list_price_thb,INTEGER,85 – 150,ราคาพื้นฐานในเมนู (บาท) ก่อนบวกมาร์กอัปสำหรับเดลิเวอรี
+menus,sweetness_min_pct,INTEGER,0,ระดับความหวานขั้นต่ำที่เมนูนี้รองรับได้
+menus,sweetness_max_pct,INTEGER,100,ระดับความหวานขั้นสูงสุดที่เมนูนี้รองรับได้
+menus,caffeine_level,VARCHAR,"low, medium, high",ระดับปริมาณคาเฟอีน
+menus,seasonal_flag,INTEGER,0 or 1,ระบุว่าเป็นสินค้าลิมิเต็ด/เมนูตามฤดูกาลหรือไม่
+menus,signature_flag,INTEGER,0 or 1,ระบุว่าเป็นเมนูซิกเนเจอร์หรือเมนูพระเอกของแบรนด์หรือไม่
+menus,launch_branch_flag,INTEGER,0 or 1,ระบุว่าเริ่มเปิดขายครั้งแรกเฉพาะบางสาขาเท่านั้นหรือไม่
+stores,store_id,INTEGER,1 – 6,รหัสสาขาแบบเฉพาะไม่ซ้ำ
+stores,store_name,VARCHAR,See below,ชื่อสาขาที่มนุษย์อ่านเข้าใจง่าย
+stores,branch_type,VARCHAR,"mall, street, office, mixed_use, mall_flagship",ประเภทการดำเนินงานของสาขา
+stores,district,VARCHAR,"Pathum Wan, Bang Rak, Khlong Toei, Ratchathewi, Khlong San",เขตในกรุงเทพฯ ที่สาขาตั้งอยู่
+stores,seats,INTEGER,6 – 30,จำนวนที่นั่งรองรับลูกค้า
+stores,takeaway_heavy_flag,INTEGER,0 or 1,1 = เป็นสาขาที่เน้นขายแบบซื้อกลับเป็นหลัก
+stores,office_traffic_index,FLOAT,0.5 – 0.95,ระดับความใกล้กับแหล่งพนักงานออฟฟิศ (ค่าถูกปรับให้อยู่ในสเกลมาตรฐาน)
+stores,mall_traffic_index,FLOAT,0.3 – 1.0,ระดับความใกล้กับกลุ่มลูกค้าห้างสรรพสินค้า (ค่าถูกปรับให้อยู่ในสเกลมาตรฐาน)
+stores,delivery_catchment_score,FLOAT,0.65 – 0.95,คุณภาพการครอบคลุมของแพลตฟอร์มเดลิเวอรีในพื้นที่ (ค่าถูกปรับให้อยู่ในสเกลมาตรฐาน)
+stores,opening_date,DATE,2025-03-01 – 2026-01-15,วันที่สาขาเปิดทำการ
+stores,flagship_flag,INTEGER,0 or 1,1 = เป็นสาขาแฟลกชิป (เช่น ICONSIAM)
+stores,floor_area_sqm,INTEGER,20 – 120,พื้นที่ใช้สอยของร้าน (ตารางเมตร)
+stores,monthly_rent_thb,INTEGER,"65,000 – 350,000",ค่าเช่ารายเดือน (บาท)
+stores,num_employees,INTEGER,4 – 12,จำนวนพนักงานรวมทั้งหมด
+stores,num_baristas,INTEGER,3 – 8,จำนวนบาริสต้า (มีผลต่อการสเกลเวลาเตรียมเครื่องดื่ม)
+stores,daily_capacity,INTEGER,200 – 600,จำนวนออร์เดอร์สูงสุดต่อวัน (มีผลต่อการสเกลเวลาให้ลูกค้ารอ)
+stores,bts_distance_m,INTEGER,80 – 500,ระยะทางจากสาขาถึงสถานี BTS ที่ใกล้ที่สุด (เมตร)
+stores,nearby_competitors,INTEGER,1 – 4,จำนวนร้านคู่แข่งในบริเวณใกล้เคียง
+stores,google_rating,FLOAT,4.1 – 4.8,คะแนนรีวิวใน Google Maps
+stores,has_parking,INTEGER,0 or 1,1 = มีที่จอดรถให้ลูกค้า
+stores,lease_end_date,DATE,2027-04-14 – 2031-01-14,วันที่สัญญาเช่าปัจจุบันจะสิ้นสุด
+transactions,transaction_id,INTEGER,"1 – 53,323",รหัสออร์เดอร์แบบเฉพาะไม่ซ้ำ (เรียงตาม `order_datetime`)
+transactions,order_datetime,TIMESTAMP,2026-02-01 09:00 – 2026-04-01 22:53,วัน–เวลาแบบเต็มของการสั่งซื้อ
+transactions,order_date,DATE,2026-02-01 – 2026-04-01,วันที่ของออร์เดอร์ (เฉพาะส่วนวันที่)
+transactions,hour,INTEGER,9 – 22,"ชั่วโมงที่มีการสั่ง (9 = 09:00, 22 = 22:00)"
+transactions,day_of_week,VARCHAR,Monday – Sunday,ชื่อวันในสัปดาห์
+transactions,dow_int,INTEGER,0 – 6,"ดัชนีเลขของวันในสัปดาห์ (0 = Monday, 6 = Sunday)"
+transactions,month,INTEGER,2 – 4,เลขเดือนของวันที่ออร์เดอร์เกิดขึ้น
+transactions,store_id,INTEGER,1 – 6,คีย์นอกเชื่อมไปยัง `stores.store_id`
+transactions,channel,VARCHAR,"dine_in, to_go, delivery",ช่องทางให้บริการออร์เดอร์ (ทานที่ร้าน ซื้อกลับบ้าน หรือเดลิเวอรี)
+transactions,platform,VARCHAR,"YumDash, C2U, direct",แพลตฟอร์มเดลิเวอรี (`direct` สำหรับออร์เดอร์ที่ไม่ใช่เดลิเวอรี)
+transactions,customer_id,INTEGER,"1000 – 3499, or NULL",คีย์นอกเชื่อมไปยัง `customers.customer_id` ค่าเป็น NULL ~74% ของออร์เดอร์ (ลูกค้า walk-in/เดลิเวอรีที่ไม่ระบุตัวตน)
+transactions,basket_qty,INTEGER,1 – 4,จำนวนเมนูในออร์เดอร์
+transactions,gross_sales_thb,FLOAT,85 – 665,ผลรวมของ `unit_list_price_thb × qty` ของทุกบรรทัด (ก่อนหักส่วนลดใด ๆ)
+transactions,item_discount_thb,FLOAT,0 – 54,ผลรวมส่วนลดระดับบรรทัด (`line_discount_thb`) ของทุกบรรทัด
+transactions,order_discount_thb,FLOAT,0 – 30,ส่วนลดในระดับออร์เดอร์จากแคมเปญโปรโมชั่น (เช่น โค้ด BUILDER3 = ลด 30 บาท)
+transactions,delivery_fee_paid_by_customer,FLOAT,0 – 70,ค่าจัดส่งที่เก็บจากลูกค้า โดยช่วงชั่วโมงพีก (11–13 และ 17–19 น.) มีการบวก surge price 1.4 เท่า
+transactions,platform_subsidy_thb,FLOAT,0 – 32,เงินอุดหนุนค่าจัดส่งจากแพลตฟอร์ม (ใช้กับประมาณ 38% ของออร์เดอร์เดลิเวอรีที่ยอดก่อนส่วนลด ≥ 199 บาท)
+transactions,net_sales_thb,FLOAT,68 – 695,ยอดขายสุทธิของออร์เดอร์ = `gross_sales_thb - item_discount_thb - order_discount_thb + delivery_fee_paid_by_customer`
+transactions,cogs_thb,FLOAT,19 – 219,ผลรวมต้นทุนสินค้าที่ขาย (`line_cogs_thb`) ของทุกบรรทัด
+transactions,packaging_cost_thb,FLOAT,2 – 20,"ค่าบรรจุภัณฑ์: เดลิเวอรี 5 บาท/เมนู, ช่องทางอื่น 2 บาท/เมนู"
+transactions,platform_commission_thb,FLOAT,0 – 147,"ค่าคอมมิชชันของแพลตฟอร์ม: YumDash = 23%, C2U = 19% ของยอดขายสุทธิของสินค้า (เฉพาะเดลิเวอรี)"
+transactions,labor_alloc_thb,FLOAT,4 – 8,ต้นทุนแรงงานที่จัดสรรต่อออร์เดอร์: 4 + 0.8 × จำนวนเมนูในออร์เดอร์ (`basket_qty`)
+transactions,contribution_margin_thb,FLOAT,39 – 287,กำไรส่วนเพิ่ม (contribution margin) ของออร์เดอร์ = `net_sales_thb - cogs_thb - packaging_cost_thb - labor_alloc_thb - platform_commission_thb`
+transactions,prep_time_min,FLOAT,3.0 – 17.0,เวลาเตรียมเครื่องดื่มพื้นฐาน สเกลตามแรงกดดันด้านความจุของสาขา: `3.0 × (orders_today / daily_capacity) / median_pressure + 1.5 × basket_qty + 2.0 (ถ้าเป็นเดลิเวอรี) + noise`
+transactions,wait_time_min,FLOAT,0.0 – 21.0,เวลาที่ลูกค้าต้องรอรับเครื่องดื่ม สำหรับ dine_in/to_go คำนวณจาก `prep_time × pressure_factor - (1 ถึง 3 นาที)` และสเกลตามความหนาแน่นของคิวในร้าน
+transactions,pickup_time_min,FLOAT,0.0 – 42.0,เวลาไปรับสินค้าในกรณีเดลิเวอรี คำนวณจาก `prep_time × pressure_factor + (10 ถึง 25 นาที)` และมีค่าเป็น 0 สำหรับออร์เดอร์ที่ไม่ใช่เดลิเวอรี
+transactions,satisfaction_score,INTEGER,1 – 5,"คะแนนความพึงพอใจของลูกค้า (1 = แย่ที่สุด, 5 = ดีที่สุด) โมเดลจากประเภทสาขา โบนัสจากความภักดี, โทษจากเวลารอที่นาน และโบนัสจากส่วนลด"
+transactions,promo_id,VARCHAR,"NULL, MORNING15, HAPPY2FOR1, BUILDER3, FLAVOR50, WELCOME20",โค้ดแคมเปญโปรโมชั่นที่ผูกกับออร์เดอร์ (ประมาณ 20% ของออร์เดอร์มีโปรโมชัน)
+transactions,weather_flag,VARCHAR,"sunny, cloudy, rainy",สภาพอากาศในวันที่มีออร์เดอร์ (จำลองด้วยแบบจำลองมาร์คอฟและการกระจายตามฤดูกาล)
+transactions,peak_flag,INTEGER,0 or 1,"1 ถ้าออร์เดอร์เกิดในช่วงชั่วโมงพีก (11–13, 17–19 น.)"
+transactions,weekend_flag,INTEGER,0 or 1,1 ถ้าเป็นวันเสาร์หรือวันอาทิตย์
+transactions,morning_flag,INTEGER,0 or 1,1 ถ้าออร์เดอร์เกิดก่อนเวลา 11:00 (ชั่วโมง 9–10)
+order_items,transaction_id,INTEGER,"1 – 53,323",คีย์นอกเชื่อมไปยัง `transactions.transaction_id`
+order_items,line_no,INTEGER,1 – 4,ลำดับบรรทัดของสินค้าในธุรกรรม (เริ่มนับจาก 1)
+order_items,sku_id,INTEGER,1 – 22,คีย์นอกเชื่อมไปยัง `menus.sku_id`
+order_items,qty,INTEGER,Always 1,จำนวนต่อบรรทัด (กำหนดให้เป็น 1 เสมอ; ขนาดตะกร้าสินค้าวัดที่ระดับธุรกรรมแทน)
+order_items,unit_list_price_thb,INTEGER,85 – 177,ราคาต่อหน่วยหลังบวกมาร์กอัปเดลิเวอรี (บาท) โดยออร์เดอร์เดลิเวอรีจะถูกบวกเพิ่ม 6–18%
+order_items,line_discount_thb,FLOAT,0.0 – 27.0,จำนวนส่วนลดที่ใช้กับบรรทัดนี้ (บาท) จากระดับสมาชิก โปรโมชั่นตามช่วงเวลา หรือแคมเปญส่วนลด
+order_items,net_line_sales_thb,FLOAT,76.5 – 172.0,ยอดขายสุทธิของบรรทัดนี้ = `unit_list_price_thb - line_discount_thb`
+order_items,sweetness_pct,INTEGER,0 – 100,"ระดับความหวานที่ลูกค้าเลือกเป็นเปอร์เซ็นต์ (0 = ไม่ใส่น้ำตาล, 100 = หวานเต็ม)"
+order_items,ice_level,VARCHAR,"no_ice, less_ice, normal, extra_ice",ความชอบระดับน้ำแข็งของลูกค้า
+order_items,add_on,VARCHAR,"none, extra_pearl, extra_milk_foam",ท็อปปิ้งเสริมที่ลูกค้าเลือก
+order_items,line_cogs_thb,FLOAT,19.0 – 70.8,ต้นทุนสินค้าที่ขายสำหรับบรรทัดนี้ (~28–40% ของยอดขายสุทธิ ขึ้นอยู่กับกลุ่มเมนู)
+order_items,order_datetime,TIMESTAMP,2026-02-01 09:00 – 2026-04-01 22:53,วัน–เวลาแบบเต็มของธุรกรรมหลักที่บรรทัดนี้สังกัดอยู่
+reviews,id,INTEGER,1 – 100,รหัสรีวิวแบบเฉพาะไม่ซ้ำ
+reviews,topic,VARCHAR,Picha Tea House,หัวข้อของรีวิว (ค่าคงที่)
+reviews,language,VARCHAR,"th, en",ภาษาของรีวิว (ไทยหรืออังกฤษ)
+reviews,rating,INTEGER,1 – 5,คะแนนรีวิวแบบดาว
+reviews,date,DATE,2026-02-01 – 2026-04-01,วันที่เขียนรีวิว
+reviews,persona,VARCHAR,Various,ประเภทบุคลิกของผู้รีวิว
+reviews,review_text,VARCHAR,Free text,เนื้อหาข้อความรีวิวเต็ม
+reviews,label,VARCHAR,authentic,ป้ายกำกับคุณภาพรีวิว (เช่น รีวิวแท้)
+reviews,spam_type,VARCHAR,NULL,ประเภทของสแปม (ในชุดข้อมูลนี้เป็น NULL ทั้งหมด)
+reviews,duplicate_group_id,VARCHAR,Various,กลุ่มที่จัดรีวิวซ้ำหรือรีวิวที่มีเนื้อหาใกล้เคียงกัน
