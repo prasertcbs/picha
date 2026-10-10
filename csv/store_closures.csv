@@ -1,0 +1,15 @@
+store_id,date,reason
+6,2026-01-29,power outage
+4,2026-03-16,water supply cut
+2,2026-04-20,equipment failure
+2,2026-06-05,power outage
+5,2026-06-12,power outage
+4,2026-08-15,building maintenance
+6,2026-08-24,water supply cut
+5,2026-09-18,power outage
+2,2026-09-20,street flooding
+3,2026-10-24,water supply cut
+1,2026-11-02,power outage
+3,2026-11-14,power outage
+1,2026-12-06,equipment failure
+4,2026-12-17,equipment failure
